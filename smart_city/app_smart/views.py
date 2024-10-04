@@ -1,48 +1,53 @@
-from django.shortcuts import render
-import os
+from django.http import HttpResponse
 import csv
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from app_smart.models import Sensor
+from django.shortcuts import render, redirect
+from django.conf import settings
+from .models import Sensor
+from .forms import CSVUploadForm
+from rest_framework.parsers import MultiPartParser, FormParser
 
-class UploadSensorsView(APIView):
-    def get(self, request):
-        # Renderiza a página de upload
-        return render(request, 'app_smart/index.html', {'message': ''})
 
-    def post(self, request):
-        file = request.FILES.get('file')
-        if not file:
-            return Response('Nenhum arquivo enviado.', status=status.HTTP_400_BAD_REQUEST)
+def abre_index(request):
+    mensagem = "OLÁ TURMA, SEJAM FELIZES SEMPRE!"
+    return HttpResponse(mensagem)
 
-        if not file.name.endswith('.csv'):
-            return Response('Formato de arquivo não suportado. Por favor, envie um arquivo CSV.', status=status.HTTP_400_BAD_REQUEST)
 
-        try:
-            # Salva o arquivo temporariamente
-            file_path = os.path.join('/tmp', file.name)
-            with open(file_path, 'wb+') as destination:
-                for chunk in file.chunks():
-                    destination.write(chunk)
-
-            # Processa o arquivo CSV
-            with open(file_path, newline='', encoding='ISO-8859-1') as csvfile:
-                reader = csv.DictReader(csvfile)
+def upload_csv_view(request):
+    
+    if request.method == 'POST':
+        form = CSVUploadForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            csv_file = request.FILES['file']
+            
+            # Verifica se o arquivo tem a extensão correta
+            if not csv_file.name.endswith('.csv'):
+                form.add_error('file', 'Este não é um arquivo CSV válido.')
+            else:
+                # Processa o arquivo CSV
+                file_data = csv_file.read().decode('ISO-8859-1').splitlines()
+                reader = csv.DictReader(file_data, delimiter=',')  
+                
                 for row in reader:
-                    Sensor.objects.create(
-                        tipo=row['tipo'],
-                        unidade_medida=row.get('unidade_medida'),
-                        latitude=float(row['latitude']),
-                        longitude=float(row['longitude']),
-                        localizacao=row['localizacao'],
-                        responsavel=row.get('responsavel', ''),
-                        status_operacional=row['status_operacional'].strip().lower() == 'true',
-                        observacao=row.get('observacao', ''),
-                        mac_address=row.get('mac_address')
-                    )
+                    try:
+                        Sensor.objects.create(
+                            tipo=row['tipo'],
+                            unidade_medida=row['unidade_medida'] if row['unidade_medida'] else None,
+                            latitude=float(row['latitude'].replace(',', '.')),
+                            longitude=float(row['longitude'].replace(',', '.')),
+                            localizacao=row['localizacao'],
+                            responsavel=row['responsavel'] if row['responsavel'] else '',
+                            status_operacional=True if row['status_operacional'] == 'True' else False,
+                            observacao=row['observacao'] if row['observacao'] else '',
+                            mac_address=row['mac_address'] if row['mac_address'] else None
+                        )
+                    except KeyError as e:
+                        print(f"Chave não encontrada: {e} na linha: {row}")  # Exibe o erro e a linha problemática
+                
 
-            return Response('Dados carregados com sucesso!', status=status.HTTP_200_OK)
+    else:
+        form = CSVUploadForm()
 
-        except Exception as e:
-            return Response(f'Erro: {str(e)}', status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return render(request, 'app_smart/upload_csv.html', {'form': form})
+
+
