@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
+    'rest_framework_simplejwt',
 ]
 
 REST_FRAMEWORK ={
@@ -74,7 +75,7 @@ MIDDLEWARE = [
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5500",  # Adicione a origem do seu frontend
+    "http://localhost:3000",  # Adicione a origem do seu frontend
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # Se você estiver usando autenticação

@@ -1,0 +1,41 @@
+.home-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sensors-list {
+    display: flex;
+    flex-direction: row; /* Altera para exibir lado a lado */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha, se necessário */
+    margin-top: 20px;
+  }
+  
+  .sensor-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px; /* Ajuste a largura conforme necessário */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sensor-item h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .sensor-item button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sensor-item button:hover {
+    background-color: #0056b3;
+  }
+  
