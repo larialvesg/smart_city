@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles.css";
-import ApexCharts from "apexcharts";
 
 const TemperatureDisplay = () => {
   const [temperatures, setTemperatures] = useState([]);

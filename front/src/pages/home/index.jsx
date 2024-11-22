@@ -15,7 +15,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Cabeçalho */}
       <header className="header">
         <div className="user-info">
           <p>Bem-vindo, {loggedInUser || "Convidado"}!</p>
@@ -24,7 +23,7 @@ const Home = () => {
         <h1>Monitoramento de Sensores</h1>
       </header>
 
-      {/* Seção de Cartões */}
+
       <section className="cards-section">
         <Link to="/temperatura" className="card">
           <h4>Temperatura</h4>
@@ -44,7 +43,6 @@ const Home = () => {
         </Link>
       </section>
 
-      {/* Gráfico */}
       <section className="chart-section">
         <h3>Estatísticas Recentes</h3>
         <ChartComponent />
