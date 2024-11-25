@@ -30,7 +30,7 @@ const Login = () => {
       setSuccessMessage("Login realizado com sucesso!");
       setErrorMessage("");
 
-      // Redirecionar para a página 'home'
+     
       navigate("/home");
 
     } catch (error) {

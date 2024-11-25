@@ -44,15 +44,15 @@ const ChartComponent = () => {
       },
       xaxis: {
         categories: [
-          "Feb",
+          "Jan",
+          "Fev",
           "Mar",
-          "Apr",
-          "May",
+          "Abr",
+          "Mai",
           "Jun",
           "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
+          "Ago",
+          "Set",
         ],
       },
       yaxis: {
