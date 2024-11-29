@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import ChartComponent from "../../Components/ChartComponent";
+import Grafico_Temp from "../../Components/Grafico_Temp";
 
 const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -14,6 +14,7 @@ const Home = () => {
   }, []);
 
   return (
+    <body className="home">
     <div className="home-container">
       <header className="header">
         <div className="user-info">
@@ -44,10 +45,11 @@ const Home = () => {
       </section>
 
       <section className="chart-section">
-        <h3>Estatísticas Recentes</h3>
-        <ChartComponent />
+        <h3>Variações de Temperatura</h3>
+        <Grafico_Temp />
       </section>
     </div>
+    </body>
   );
 };
 

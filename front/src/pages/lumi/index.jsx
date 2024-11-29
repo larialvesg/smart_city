@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./styles.css";
+import "./lumi.css";
 
 const LuminosidadeDisplay = () => {
   const [luminosidades, setLuminosidades] = useState([]);
@@ -23,44 +23,48 @@ const LuminosidadeDisplay = () => {
   }, []);
 
   return (
+    <body className="luminosidade">
     <div>
       <h1>Luminosidades Registradas</h1>
       {error && <p className="error">{error}</p>}
       <div className="table-container">
         <table className="table">
-          <thead>
+        <thead>
             <tr>
               <th>ID do Sensor</th>
-              <th>Valor (°C)</th>
-              <th>Data de Registro</th>
               <th>Tipo</th>
+              <th>Valor</th>
+              <th>Data</th>
               <th>Unid</th>
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Localização</th>
               <th>Responsável</th>
+              <th>Obs</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {luminosidades.map((luminity) => (
               <tr key={luminity.id}>
-                <td>{luminity.sensor.id}</td>
+                <td>{luminity.id}</td>
+                <td>{luminity.tipo}</td>
                 <td>{luminity.valor.toFixed(2)}</td>
                 <td>{new Date(luminity.timestamp).toLocaleString()}</td>
-                <td>null</td>
-                <td>null</td>
-                <td>null</td>
-                <td>null</td>
-                <td>null</td>
-                <td>null</td>
-                <td>null</td>
+                <td>{luminity.unidade_medida}</td>
+                <td>{luminity.latitude}</td>
+                <td>{luminity.longitude}</td>
+                <td>{luminity.localizacao}</td>
+                <td>{luminity.responsavel}</td>
+                <td>{luminity.observacao}</td>
+                <td>{luminity.status_operacional ? "Ativo" : "Inativo"}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
+    </body>
   );
 };
 

@@ -30,8 +30,9 @@ class TemperaturaDataViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
 
 class TemperatureDataList(generics.ListAPIView):
-    queryset = TemperaturaData.objects.all()
     serializer_class = TemperaturaDataSerializer
+    def get_queryset(self):
+        return TemperaturaData.objects.filter()
 
 
 class UmidadeDataViewSet(viewsets.ModelViewSet):     
@@ -40,18 +41,20 @@ class UmidadeDataViewSet(viewsets.ModelViewSet):
    
 
 class UmidadeDataList(generics.ListAPIView):
-    queryset = UmidadeData.objects.all()
     serializer_class = UmidadeDataSerializer
+    def get_queryset(self):
+        return UmidadeData.objects.filter()
 
 
 class ContadorDataViewSet(viewsets.ModelViewSet):     
     queryset = ContadorData.objects.all()
     serializer_class = serializers.ContadorDataSerializer     
    
-
 class ContadorDataList(generics.ListAPIView):
-    queryset = ContadorData.objects.all()
     serializer_class = ContadorDataSerializer
+    def get_queryset(self):
+        return ContadorData.objects.filter()
+
 
 class LuminosidadeDataViewSet(viewsets.ModelViewSet):     
     queryset = LuminosidadeData.objects.all()
@@ -59,5 +62,6 @@ class LuminosidadeDataViewSet(viewsets.ModelViewSet):
    
 
 class LuminosidadeDataList(generics.ListAPIView):
-    queryset = LuminosidadeData.objects.all()
     serializer_class = LuminosidadeDataSerializer
+    def get_queryset(self):
+        return LuminosidadeData.objects.filter()

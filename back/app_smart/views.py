@@ -71,21 +71,54 @@ def load_temperature_data(request):
                 
                 for row in reader:
                     try:
-                        sensor_id = int(row['sensor_id'])             
-                        valor = float(row['valor'])
-                        timestamp = parser.parse(row['timestamp'])  
-
-                        try:
-                            sensor_instance = Sensor.objects.get(id=sensor_id)
-                        except Sensor.DoesNotExist:
-                            print(f"Sensor com ID {sensor_id} não encontrado. Pulando a linha: {row}")
-                            continue  # Pule para a próxima iteração se o sensor não existir
                         
+                        # Aqui criamos ou atualizamos os dados de temperatura
+                        tipo = row['tipo']
+                        unidade_medida = row['unidade_medida'] if row['unidade_medida'] else None
+                        latitude = float(row['latitude'].replace(',', '.'))
+                        longitude = float(row['longitude'].replace(',', '.'))
+                        localizacao = row['localizacao']
+                        responsavel = row['responsavel'] if row['responsavel'] else ''
+                        status_operacional = True if row['status_operacional'] == 'True' else False
+                        observacao = row['observacao'] if row['observacao'] else ''
+                        mac_address = row['mac_address'] if row['mac_address'] else None
+                        valor = float(row['valor'].replace(',', '.')) 
+                        timestamp = row['timestamp'] 
+                        
+
+                        # Criar ou buscar o sensor
+                        sensor_instance, created = Sensor.objects.get_or_create(
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address
+                            
+                        )
+                  
+                        # Aqui, verificamos se o timestamp está no formato adequado e convertemos se necessário
+                        timestamp = parser.parse(timestamp) if isinstance(timestamp, str) else timestamp
+                        
+                        # Criar o objeto de TemperaturaData
                         TemperaturaData.objects.create(
-                            sensor=sensor_instance,  # Atribuindo a instância do Sensor
-                            valor=valor, 
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address,
+                            valor=valor,
                             timestamp=timestamp
-                        )    
+                            
+                        )   
+                        
                     except KeyError as e:
                         print(f"Chave não encontrada: {e} na linha: {row}")  # Exibe o erro e a linha problemática
                 
@@ -113,24 +146,57 @@ def load_umidade_data(request):
                 
                 for row in reader:
                     try:
-                        sensor_id = int(row['sensor_id'])             
-                        valor = float(row['valor'])
-                        timestamp = parser.parse(row['timestamp'])  
-
-                        try:
-                            sensor_instance = Sensor.objects.get(id=sensor_id)
-                        except Sensor.DoesNotExist:
-                            print(f"Sensor com ID {sensor_id} não encontrado. Pulando a linha: {row}")
-                            continue  # Pule para a próxima iteração se o sensor não existir
                         
+                        # Aqui criamos ou atualizamos os dados de umidade
+                        tipo = row['tipo']
+                        unidade_medida = row['unidade_medida'] if row['unidade_medida'] else None
+                        latitude = float(row['latitude'].replace(',', '.'))
+                        longitude = float(row['longitude'].replace(',', '.'))
+                        localizacao = row['localizacao']
+                        responsavel = row['responsavel'] if row['responsavel'] else ''
+                        status_operacional = True if row['status_operacional'] == 'True' else False
+                        observacao = row['observacao'] if row['observacao'] else ''
+                        mac_address = row['mac_address'] if row['mac_address'] else None
+                        valor = float(row['valor'].replace(',', '.')) 
+                        timestamp = row['timestamp'] 
+                        
+
+                        # Criar ou buscar o sensor
+                        sensor_instance, created = Sensor.objects.get_or_create(
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address
+                            
+                        )
+                  
+                        # Aqui, verificamos se o timestamp está no formato adequado e convertemos se necessário
+                        timestamp = parser.parse(timestamp) if isinstance(timestamp, str) else timestamp
+                        
+                        # Criar o objeto de TemperaturaData
                         UmidadeData.objects.create(
-                            sensor=sensor_instance,  # Atribuindo a instância do Sensor
-                            valor=valor, 
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address,
+                            valor=valor,
                             timestamp=timestamp
-                        )    
+                            
+                        )   
+                        
                     except KeyError as e:
                         print(f"Chave não encontrada: {e} na linha: {row}")  # Exibe o erro e a linha problemática
-                
+                    
 
     else:
         form = CSVUploadUmi()
@@ -155,19 +221,54 @@ def load_contador_data(request):
                 
                 for row in reader:
                     try:
-                        sensor_id = int(row['sensor_id'])             
-                        timestamp = parser.parse(row['timestamp'])  
-
-                        try:
-                            sensor_instance = Sensor.objects.get(id=sensor_id)
-                        except Sensor.DoesNotExist:
-                            print(f"Sensor com ID {sensor_id} não encontrado. Pulando a linha: {row}")
-                            continue  # Pule para a próxima iteração se o sensor não existir
                         
+                        # Aqui criamos ou atualizamos os dados de contador
+                        tipo = row['tipo']
+                        unidade_medida = row['unidade_medida'] if row['unidade_medida'] else None
+                        latitude = float(row['latitude'].replace(',', '.'))
+                        longitude = float(row['longitude'].replace(',', '.'))
+                        localizacao = row['localizacao']
+                        responsavel = row['responsavel'] if row['responsavel'] else ''
+                        status_operacional = True if row['status_operacional'] == 'True' else False
+                        observacao = row['observacao'] if row['observacao'] else ''
+                        mac_address = row['mac_address'] if row['mac_address'] else None
+                        valor = float(row['valor'].replace(',', '.')) 
+                        timestamp = row['timestamp'] 
+                        
+
+                        # Criar ou buscar o sensor
+                        sensor_instance, created = Sensor.objects.get_or_create(
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address
+                            
+                        )
+                  
+                        # Aqui, verificamos se o timestamp está no formato adequado e convertemos se necessário
+                        timestamp = parser.parse(timestamp) if isinstance(timestamp, str) else timestamp
+                        
+                        # Criar o objeto de TemperaturaData
                         ContadorData.objects.create(
-                            sensor=sensor_instance,  # Atribuindo a instância do Sensor
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address,
+                            valor=valor,
                             timestamp=timestamp
-                        )    
+                            
+                        )   
+                        
                     except KeyError as e:
                         print(f"Chave não encontrada: {e} na linha: {row}")  # Exibe o erro e a linha problemática
                 
@@ -194,21 +295,54 @@ def load_luminosidade_data(request):
                 
                 for row in reader:
                     try:
-                        sensor_id = int(row['sensor_id'])             
-                        valor = float(row['valor'])
-                        timestamp = parser.parse(row['timestamp'])  
-
-                        try:
-                            sensor_instance = Sensor.objects.get(id=sensor_id)
-                        except Sensor.DoesNotExist:
-                            print(f"Sensor com ID {sensor_id} não encontrado. Pulando a linha: {row}")
-                            continue  # Pule para a próxima iteração se o sensor não existir
                         
+                        # Aqui criamos ou atualizamos os dados de luminosidade
+                        tipo = row['tipo']
+                        unidade_medida = row['unidade_medida'] if row['unidade_medida'] else None
+                        latitude = float(row['latitude'].replace(',', '.'))
+                        longitude = float(row['longitude'].replace(',', '.'))
+                        localizacao = row['localizacao']
+                        responsavel = row['responsavel'] if row['responsavel'] else ''
+                        status_operacional = True if row['status_operacional'] == 'True' else False
+                        observacao = row['observacao'] if row['observacao'] else ''
+                        mac_address = row['mac_address'] if row['mac_address'] else None
+                        valor = float(row['valor'].replace(',', '.')) 
+                        timestamp = row['timestamp'] 
+                        
+
+                        # Criar ou buscar o sensor
+                        sensor_instance, created = Sensor.objects.get_or_create(
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address
+                            
+                        )
+                  
+                        # Aqui, verificamos se o timestamp está no formato adequado e convertemos se necessário
+                        timestamp = parser.parse(timestamp) if isinstance(timestamp, str) else timestamp
+                        
+                        # Criar o objeto de TemperaturaData
                         LuminosidadeData.objects.create(
-                            sensor=sensor_instance,  # Atribuindo a instância do Sensor
-                            valor=valor, 
+                            tipo=tipo,
+                            unidade_medida=unidade_medida,
+                            latitude=latitude,
+                            longitude=longitude,
+                            localizacao=localizacao,
+                            responsavel=responsavel,
+                            status_operacional=status_operacional,
+                            observacao=observacao,
+                            mac_address=mac_address,
+                            valor=valor,
                             timestamp=timestamp
-                        )    
+                            
+                        )   
+                        
                     except KeyError as e:
                         print(f"Chave não encontrada: {e} na linha: {row}")  # Exibe o erro e a linha problemática
                 
