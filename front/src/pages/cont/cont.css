@@ -1,0 +1,95 @@
+/* Fonte e estilo global */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.cont {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fc; 
+  margin: 0;
+  padding: 0;
+  color: #333; 
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 30px 0;
+  margin-top: 5%;
+}
+
+/* Estilo para mensagens de erro */
+.error {
+  color: #e74c3c;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Container para a tabela */
+.table-container {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-x: auto;
+
+}
+
+/* Estilo da tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.table thead {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+}
+
+.table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f0f8ff; 
+}
+
+.table th {
+  font-size: 1.1rem;
+}
+
+.table td {
+  font-size: 1rem;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; 
+}
+
+/* Estilo para o gráfico */
+.chart-section {
+  margin-top: 40px;
+  text-align: center;
+  max-width: 90%;
+  margin-left: 4%;
+}
+
+.chart-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+

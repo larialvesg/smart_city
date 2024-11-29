@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./umi.css";
+import Grafico_Umi from "../../Components/Grafico_Umi";
 
 const UmidadeDisplay = () => {
   const [umidade, setUmidade] = useState([]);
@@ -21,8 +23,14 @@ const UmidadeDisplay = () => {
   }, []);
 
   return (
+    <body className="umi">
     <div>
-      <h1>Umidades Registradas</h1>
+    <div className="cabecalho">
+        <Link to="grafico/umi" className="botao-graficos">
+          <p>Ver Gráficos</p>
+        </Link>
+        <h1>Umidades Registradas</h1>
+        </div>
       {error && <p className="error">{error}</p>}
       <div className="table-container">
         <table className="table">
@@ -60,7 +68,12 @@ const UmidadeDisplay = () => {
           </tbody>
         </table>
       </div>
+      <section className="chart-section">
+          <h3>Variações de Umidade</h3>
+          <Grafico_Umi />
+        </section>
     </div>
+    </body>
   );
 };
 

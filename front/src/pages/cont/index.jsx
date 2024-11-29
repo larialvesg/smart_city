@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './cont.css';
-import ApexCharts from 'apexcharts'
+import ApexCharts from 'apexcharts';
+import { Link } from "react-router-dom";
+import Grafico_Cont from "../../Components/Grafico_Cont";
 
 const CounterDisplay = () => {
   const [counters, setCounters] = useState([]);
@@ -22,8 +24,13 @@ const CounterDisplay = () => {
   }, []);
 
   return (
-    <div>
-  <h1>Contadores Registrados</h1>
+    <body className="cont">
+    <div> <div className="cabecalho">
+        <Link to="grafico/cont" className="botao-graficos">
+          <p>Ver Gráficos</p>
+        </Link>
+        <h1>Contadores Registradas</h1>
+        </div>
   {error && <p className="error">{error}</p>} {/* Exibe erro caso ocorra */}
   <div className="table-container">
     <table className="table">
@@ -61,7 +68,12 @@ const CounterDisplay = () => {
       </tbody>
     </table>
   </div>
+  <section className="chart-section">
+          <h3>Variações de Contador</h3>
+          <Grafico_Cont />
+        </section>
 </div>
+</body>
   );
 };
 

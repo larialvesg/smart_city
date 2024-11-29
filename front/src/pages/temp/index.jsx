@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./temp.css";
+import { Link } from "react-router-dom";
 import Grafico_Temp from "../../Components/Grafico_Temp";
 
 const TemperatureDisplay = () => {
@@ -26,7 +27,12 @@ const TemperatureDisplay = () => {
   return (
     <body className="temp">
       <div>
+        <div className="cabecalho">
+        <Link to="grafico/temp" className="botao-graficos">
+          <p>Ver Gráficos</p>
+        </Link>
         <h1>Temperaturas Registradas</h1>
+        </div>
         {error && <p className="error">{error}</p>}
         <div className="table-container">
           <table className="table">

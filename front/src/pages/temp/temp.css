@@ -92,4 +92,28 @@ h1 {
   font-weight: 600;
 }
 
+.botao-graficos {
+  background-color: #007bff;
+  width: 8%;
+  height: 10%;
+  text-decoration: none;
+  margin-left: 20%;
+  margin-top: 4%;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  
+
+}
+
+.botao-graficos:hover {
+  background-color: #0056b3; 
+}
+
+.cabecalho{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-left: 20%;
+}
 
