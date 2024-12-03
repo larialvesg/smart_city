@@ -65,7 +65,8 @@ const ChartComponent = () => {
     <div
       id="chart"
       style={{
-        width: "100%",  
+        paddingTop: "10%",
+        width: "80%",  
         height: "300px", 
         margin: "0 auto",
       }}

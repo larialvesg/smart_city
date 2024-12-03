@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./temp.css";
 import { Link } from "react-router-dom";
-import Grafico_Temp from "../../Components/Grafico_Temp";
+
 
 const TemperatureDisplay = () => {
   const [temperatures, setTemperatures] = useState([]);
@@ -28,7 +28,7 @@ const TemperatureDisplay = () => {
     <body className="temp">
       <div>
         <div className="cabecalho">
-        <Link to="grafico/temp" className="botao-graficos">
+        <Link to="graficotemp" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
         <h1>Temperaturas Registradas</h1>
@@ -70,10 +70,7 @@ const TemperatureDisplay = () => {
             </tbody>
           </table>
         </div>
-        <section className="chart-section">
-          <h3>Variações de Temperatura</h3>
-          <Grafico_Temp />
-        </section>
+        
       </div>
     </body>
   );

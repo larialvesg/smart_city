@@ -40,7 +40,7 @@ const ChartComponent = () => {
         },
       },
       xaxis: {
-        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set'],
+        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
       }
       };
       for (let i = 0; i < idCount; i++){
@@ -65,7 +65,8 @@ const ChartComponent = () => {
     <div
       id="chart"
       style={{
-        width: "100%",  
+        paddingTop: "10%",
+        width: "80%",  
         height: "300px", 
         margin: "0 auto",
       }}

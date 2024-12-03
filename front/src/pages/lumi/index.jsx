@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./lumi.css";
 import { Link } from "react-router-dom";
-import Grafico_Lumi from "../../Components/Grafico_Lumi";
+
 
 const LuminosidadeDisplay = () => {
   const [luminosidades, setLuminosidades] = useState([]);
@@ -28,7 +28,7 @@ const LuminosidadeDisplay = () => {
     <body className="luminosidade">
     <div>
     <div className="cabecalho">
-    <Link to="grafico/lumi" className="botao-graficos">
+    <Link to="graficolumi" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
       <h1>Luminosidades Registradas</h1>
@@ -70,10 +70,6 @@ const LuminosidadeDisplay = () => {
           </tbody>
         </table>
       </div>
-      <section className="chart-section">
-          <h3>Variações de Luminosidade</h3>
-          <Grafico_Lumi />
-        </section>
     </div>
     </body>
   );

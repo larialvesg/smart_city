@@ -3,7 +3,7 @@ import axios from "axios";
 import './cont.css';
 import ApexCharts from 'apexcharts';
 import { Link } from "react-router-dom";
-import Grafico_Cont from "../../Components/Grafico_Cont";
+
 
 const CounterDisplay = () => {
   const [counters, setCounters] = useState([]);
@@ -26,7 +26,7 @@ const CounterDisplay = () => {
   return (
     <body className="cont">
     <div> <div className="cabecalho">
-        <Link to="grafico/cont" className="botao-graficos">
+        <Link to="graficocont" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
         <h1>Contadores Registradas</h1>
@@ -68,10 +68,6 @@ const CounterDisplay = () => {
       </tbody>
     </table>
   </div>
-  <section className="chart-section">
-          <h3>Variações de Contador</h3>
-          <Grafico_Cont />
-        </section>
 </div>
 </body>
   );

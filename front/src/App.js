@@ -23,10 +23,10 @@ const App = () => {
         <Route path="/contador" element={<Cont />} />
         <Route path="/umidade" element={<Umi />} />
         <Route path="/luminosidade" element={<Lumi />} />
-        <Route path="/grafico/temp" element={<Graficos_Temp />} />
-        <Route path="/grafico/lumi" element={<Graficos_Lumi />} />
-        <Route path="/grafico/umi" element={<Graficos_Umi />} />
-        <Route path="/grafico/cont" element={<Graficos_Cont />} />
+        <Route path="/temperatura/graficotemp" element={<Graficos_Temp />} />
+        <Route path="/luminosidade/graficolumi" element={<Graficos_Lumi />} />
+        <Route path="/umidade/graficoumi" element={<Graficos_Umi />} />
+        <Route path="/contador/graficocont" element={<Graficos_Cont />} />
         
         
       </Routes>
