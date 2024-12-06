@@ -125,3 +125,6 @@
     text-decoration: underline;
   }
   
+  .imagem-banner img{
+    width: 100%;
+  }

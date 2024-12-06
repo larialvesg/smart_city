@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import Grafico_Temp from "../../Components/Grafico_Temp";
+import imagem from "../../Images/banner.png";
 
 const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -44,9 +44,8 @@ const Home = () => {
         </Link>
       </section>
 
-      <section className="chart-section">
-        <h3>Variações de Temperatura</h3>
-        <Grafico_Temp />
+      <section className="imagem-banner">
+        <img src={imagem} alt="banner" />
       </section>
     </div>
     </body>

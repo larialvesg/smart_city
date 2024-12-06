@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+#chart1{
+    margin-top: 2%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 19px;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    width: 75%;
+    
+}
+
+.chart-container h2{
+    margin-top: 6%;
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+     font-family: 'Poppins', sans-serif;
+}
+
+
+
