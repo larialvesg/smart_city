@@ -26,9 +26,13 @@ const UmidadeDisplay = () => {
     <body className="umi">
     <div>
     <div className="cabecalho">
+        <Link to="/home" className="botao-graficos-temp">
+          <p>Voltar</p>
+        </Link>
         <Link to="graficoumi" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
+        
         <h1>Umidades Registradas</h1>
         </div>
       {error && <p className="error">{error}</p>}

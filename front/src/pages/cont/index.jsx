@@ -25,10 +25,15 @@ const CounterDisplay = () => {
 
   return (
     <body className="cont">
-    <div> <div className="cabecalho">
+    <div> 
+    <div className="cabecalho">
+        <Link to="/home" className="botao-graficos-temp">
+          <p>Voltar</p>
+        </Link>
         <Link to="graficocont" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
+        
         <h1>Contadores Registradas</h1>
         </div>
   {error && <p className="error">{error}</p>} {/* Exibe erro caso ocorra */}

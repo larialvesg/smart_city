@@ -27,10 +27,15 @@ const TemperatureDisplay = () => {
   return (
     <body className="temp">
       <div>
+      
         <div className="cabecalho">
+        <Link to="/home" className="botao-graficos-temp">
+          <p>Voltar</p>
+        </Link>
         <Link to="graficotemp" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
+        
         <h1>Temperaturas Registradas</h1>
         </div>
         {error && <p className="error">{error}</p>}

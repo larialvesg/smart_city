@@ -28,11 +28,15 @@ const LuminosidadeDisplay = () => {
     <body className="luminosidade">
     <div>
     <div className="cabecalho">
-    <Link to="graficolumi" className="botao-graficos">
+        <Link to="/home" className="botao-graficos-temp">
+          <p>Voltar</p>
+        </Link>
+        <Link to="graficolumi" className="botao-graficos">
           <p>Ver Gráficos</p>
         </Link>
-      <h1>Luminosidades Registradas</h1>
-      </div>
+        
+        <h1>Luminosidades Registradas</h1>
+        </div>
       {error && <p className="error">{error}</p>}
       <div className="table-container">
         <table className="table">

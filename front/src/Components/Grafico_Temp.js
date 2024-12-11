@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import ApexCharts from "apexcharts";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 
 const ChartComponent1 = () => {
@@ -57,8 +58,12 @@ const ChartComponent1 = () => {
 const MainComponent = () => {
   return (
     <div className="chart-container">
+      <Link to="/temperatura" className="botao-graficos-2">
+          <p>Voltar</p>
+        </Link>
       <h2>Temperaturas</h2>
       <ChartComponent1 />
+      
     </div>
   );
 };

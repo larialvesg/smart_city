@@ -22,12 +22,27 @@
 }
 
 .chart-container h2{
-    margin-top: 6%;
+    margin-top: 2%;
     text-align: center;
     font-size: 3rem;
     color: black;
-     font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
+.botao-graficos-2 {
+    font-family: 'Poppins', sans-serif;
+    background-color: #007bff;
+    width: 8%;
+    height: 10%;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    margin-left: 70%;
+    margin-top: 2%;
 
-
+  }
+  
+  .botao-graficos-2:hover {
+    background-color: #0056b3; 
+  }

@@ -117,3 +117,21 @@ h1 {
   margin-left: 20%;
 }
 
+.botao-graficos-temp {
+  background-color: #007bff;
+  width: 8%;
+  height: 10%;
+  text-decoration: none;
+  margin-left: 2%;
+  margin-top: 4%;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  margin-right: -15%;
+  
+
+}
+
+.botao-graficos-temp:hover {
+  background-color: #0056b3; 
+}
